@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">MainActivity</string>
+    <string name="app_name">eSeniors</string>
+    <string name="forgotPassword"><b><u>Forgot Password?</u></b></string>
 </resources>
