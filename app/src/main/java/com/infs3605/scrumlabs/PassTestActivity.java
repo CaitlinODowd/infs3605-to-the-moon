@@ -90,10 +90,10 @@ public class PassTestActivity extends AppCompatActivity {
     }
     public boolean checkLength (char[] passArray) {
         //if password is not long enough
-        if (passArray.length < 8) {
-            return false;
+        if (passArray.length > 7) {
+            return true;
         }
-        return true;
+        return false;
     }
 
     public boolean checkUpperCase (char[] passArray) {
