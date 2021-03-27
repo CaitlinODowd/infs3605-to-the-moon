@@ -9,6 +9,7 @@ package com.infs3605.scrumlabs;
 // At least one number
 // At least one special character
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -25,7 +26,7 @@ import android.widget.TextView;
 public class PassTestActivity extends AppCompatActivity {
     Button bCheck;
     EditText etPassword;
-    TextView tvOutcome;
+    TextView tvOutcome, tvWeak, tvStrong, tvMedium, tvStrength, tvPassTestTitle, tvPassTestQuestion;
 
 
     @Override
@@ -34,9 +35,15 @@ public class PassTestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pass_test);
 
         //initialise UI
-        //bCheck = findViewById(R.id.bCheck);
-        //etPassword = findViewById(R.id.etPassword);
-        //tvOutcome = findViewById(R.id.tvOutcome);
+        tvPassTestTitle = findViewById(R.id.tvPassTestTitle);
+        tvPassTestQuestion = findViewById(R.id.tvPassTestQuestion);
+        tvWeak = findViewById(R.id.tvWeak);
+        tvMedium = findViewById(R.id.tvMedium);
+        tvStrong = findViewById(R.id.tvStrong);
+        tvStrength = findViewById(R.id.tvStrength);
+        bCheck = findViewById(R.id.bCheck);
+        etPassword = findViewById(R.id.etPassword);
+        tvOutcome = findViewById(R.id.tvOutcome);
 
         //check password when button is clicked
         bCheck.setOnClickListener(new View.OnClickListener() {
@@ -57,7 +64,7 @@ public class PassTestActivity extends AppCompatActivity {
 
         //check outcomes of all tests
         if (!checkLength(passArray)) {
-            outcome += "- To be at least 8 characters long";
+            outcome += "- To be at least 8 characters long\n";
             falseCount += 1;
         }
 
@@ -81,8 +88,24 @@ public class PassTestActivity extends AppCompatActivity {
             falseCount += 1;
         }
 
-        if(falseCount == 0) {
+        if(falseCount == 4 || falseCount == 5){
+            tvStrength.setText("VERY WEAK");
+            tvStrength.setTextColor(Color.RED);
+            tvWeak.setTextColor(Color.RED);
+        }
+        else if (falseCount == 1 || falseCount ==2 || falseCount ==3){
+            tvStrength.setText("MEDIUM");
+            tvStrength.setTextColor(Color.parseColor("#ffa500"));
+            tvWeak.setTextColor(Color.RED);
+            tvMedium.setTextColor(Color.parseColor("#ffa500"));
+        }
+        else if(falseCount == 0) {
             outcome = "No errors with password";
+            tvStrength.setText("VERY STRONG");
+            tvStrength.setTextColor(Color.GREEN);
+            tvWeak.setTextColor(Color.RED);
+            tvMedium.setTextColor(Color.parseColor("#ffa500"));
+            tvStrong.setTextColor(Color.GREEN);
         }
 
         tvOutcome.setText(outcome);

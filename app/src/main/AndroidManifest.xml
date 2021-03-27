@@ -13,14 +13,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MainActivity">
         <activity
+
             android:name=".PassTestActivity"
             android:label="@string/title_activity_pass_test"
-            android:theme="@style/Theme.MainActivity.NoActionBar"></activity>
-        <activity android:name=".SplashActivity">
+            android:theme="@style/Theme.MainActivity.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".SplashActivity">
+
         </activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity" />
