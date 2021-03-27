@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashActivity">
+    tools:context=".SplashActivity"
+    android:background="@color/nude">
 
     <ImageView
         android:id="@+id/imLogo"
@@ -15,34 +16,63 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.8"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/cyrus_logo" />
 
     <TextView
         android:id="@+id/tvSplash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="E-Senior Bot - Cyrus"
+        android:fontFamily="@font/oxygen_bold"
+        android:gravity="center_horizontal"
+        android:text="E-Seniors"
         android:textColor="@color/orange"
-        android:textSize="30sp"
+        android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.472" />
 
     <ImageView
         android:id="@+id/imRedCross"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
+        android:layout_width="99dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginLeft="52dp"
         android:layout_marginTop="250dp"
-        android:layout_marginEnd="150dp"
-        android:layout_marginRight="150dp"
         android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imToTheMoon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSplash"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/australian_red_cross" />
+
+    <ImageView
+        android:id="@+id/imToTheMoon"
+        android:layout_width="178dp"
+        android:layout_height="54dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imRedCross"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imRedCross"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/tothemoon_logo" />
+
+    <TextView
+        android:id="@+id/tv_tagline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Cybersecurity app for Australian Seniors"
+        android:textColor="@color/navy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSplash"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
