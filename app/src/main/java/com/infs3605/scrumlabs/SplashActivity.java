@@ -13,12 +13,12 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        (new Handler()).postDelayed(this::launchLoginActivity, 5000);
+        // Shows the app splash screen for a second
+        (new Handler()).postDelayed(this::launchLoginActivity, 1000);
     }
 
     private void launchLoginActivity() {
         Intent loginIntent = new Intent(this, LoginActivity.class);
-        loginIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         startActivity(loginIntent);
     }
 }

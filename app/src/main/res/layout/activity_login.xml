@@ -8,7 +8,7 @@
     tools:context=".LoginActivity">
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/llHomeTop"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/orange"
@@ -18,13 +18,13 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imHomeLogo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/logo" />
+            app:srcCompat="@drawable/chat" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/tvHomeTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -36,22 +36,26 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
+        android:id="@+id/llHomeMiddle"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
         android:background="@drawable/rounded_bg"
         android:orientation="vertical"
         android:paddingLeft="25dp"
         android:paddingTop="10dp"
         android:paddingRight="25dp"
         android:paddingBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintBottom_toTopOf="@+id/llLoginBottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+        app:layout_constraintTop_toBottomOf="@+id/llHomeTop">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tvRegisterPrompt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -62,20 +66,20 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/etUsername"
-            android:layout_width="wrap_content"
+            android:id="@+id/etRegisterEmail"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_input_bg"
             android:drawableLeft="@drawable/email32"
             android:drawablePadding="8dp"
             android:ems="10"
-            android:hint="Username"
+            android:hint="E-Mail"
             android:inputType="textPersonName"
             android:padding="15dp" />
 
         <EditText
-            android:id="@+id/etPassword"
-            android:layout_width="wrap_content"
+            android:id="@+id/etRegisterPassword"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:background="@drawable/rounded_input_bg"
@@ -87,41 +91,45 @@
             android:padding="15dp" />
 
         <Button
-            android:id="@+id/bLogin"
+            android:id="@+id/bRegister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
             android:text="Login"
             android:textColor="@color/white"
+            android:textStyle="bold"
             app:backgroundTint="@color/Red"
             app:icon="@drawable/next32"
             app:iconPadding="8dp"
             app:iconTint="@color/white" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tvLoginForgot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_marginTop="15dp"
             android:text="@string/forgotPassword"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout3"
+        android:id="@+id/llLoginBottom"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
         android:orientation="vertical"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:paddingBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/tvLoginRegPrompt1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -131,28 +139,25 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/tvLoginRegPrompt2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:paddingBottom="24dp"
             android:text="Register now"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/bRegister"
+            android:id="@+id/bLoginRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="50dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginRight="50dp"
             android:background="@drawable/rounded_register_bg"
             android:text="Register"
             android:textColor="@color/blue"
+            android:textStyle="bold"
             app:backgroundTint="@color/blue" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
