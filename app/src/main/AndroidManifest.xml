@@ -12,10 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MainActivity">
+        <activity android:name=".QuizActivity"></activity>
         <activity
             android:name=".PassTestActivity"
             android:label="@string/title_activity_pass_test"
-            android:theme="@style/Theme.MainActivity.NoActionBar"></activity>
+            android:theme="@style/Theme.MainActivity.NoActionBar" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

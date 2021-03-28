@@ -88,6 +88,7 @@ public class PassTestActivity extends AppCompatActivity {
             falseCount += 1;
         }
 
+        //intialise strength bar
         if(falseCount == 4 || falseCount == 5){
             tvStrength.setText("VERY WEAK");
             tvStrength.setTextColor(Color.RED);
