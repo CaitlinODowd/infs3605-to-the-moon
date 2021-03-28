@@ -2,6 +2,7 @@ package com.infs3605.scrumlabs;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,45 +15,57 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.infs3605.scrumlabs.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
-    Button bLogin, bRegister;
-    EditText etUsername, etPassword;
+    Button bLogin, bLoginRegister;
+    EditText etLoginEmail, etLoginPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        etUsername = findViewById(R.id.etUsername);
-        etPassword = findViewById(R.id.etPassword);
-        bLogin = findViewById(R.id.bLogin);
-        bRegister = findViewById(R.id.bRegister);
+        etLoginEmail = findViewById(R.id.etRegisterEmail);
+        etLoginPassword = findViewById(R.id.etRegisterPassword);
+        bLogin = findViewById(R.id.bRegister);
+        bLoginRegister = findViewById(R.id.bLoginRegister);
 
         bLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loginUser(etUsername.getText().toString(), etPassword.getText().toString());
+                loginUser(etLoginEmail.getText().toString(), etLoginPassword.getText().toString());
+            }
+        });
+
+        bLoginRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchRegisterActivity();
             }
         });
     }
 
-    private void loginUser(String username, String password) {
+    private void loginUser(String email, String password) {
         String postUrl = "https://eseniors.pythonanywhere.com/auth/device/";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
         JSONObject postData = new JSONObject();
         try {
-            postData.put("username", username);
+            // TODO
+            // Change post json value from 'username' to 'email'
+            postData.put("username", email);
             postData.put("password", password);
 
-            Log.d(TAG, "loginUser: POST username = " + postData.getString("username"));
+            // TODO
+            // Change returned json value from 'username' to 'email'
+            Log.d(TAG, "loginUser: POST email = " + postData.getString("username"));
             Log.d(TAG, "loginUser: POST password = " + postData.getString("password"));
+
+            launchHomeActivity();
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -72,5 +85,15 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         requestQueue.add(jsonObjectRequest);
+    }
+
+    private void launchHomeActivity() {
+        Intent mainIntent = new Intent(this, HomeActivity.class);
+        startActivity(mainIntent);
+    }
+
+    private void launchRegisterActivity() {
+        Intent registerIntent = new Intent(this, RegisterActivity.class);
+        startActivity(registerIntent);
     }
 }
