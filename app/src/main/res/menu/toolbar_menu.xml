@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:title="voiceAssist"
+        android:icon="@drawable/user32"
+        android:id="@+id/voiceAssist_toolbar"
+        app:showAsAction="always">
+    </item>
+
+    <item
+        android:title="setting"
+        android:icon="@drawable/gear32"
+        android:id="@+id/setting_toolbar"
+        app:showAsAction="always">
+    </item>
+
+</menu>

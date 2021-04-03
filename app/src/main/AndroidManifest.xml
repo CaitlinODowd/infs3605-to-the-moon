@@ -16,11 +16,6 @@ package="com.infs3605.scrumlabs">
         android:name=".PassTestActivity"
         android:label="@string/title_activity_pass_test"
         android:theme="@style/Theme.MainActivity.NoActionBar">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
     </activity>
     <activity android:name=".QuizActivity"></activity>
     <activity android:name=".SplashActivity">
@@ -31,7 +26,13 @@ package="com.infs3605.scrumlabs">
         </intent-filter>
     </activity>
     <activity android:name=".LoginActivity" />
-    <activity android:name=".HomeActivity" />
+    <activity android:name=".HomeActivity">
+    <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+
+        <category android:name="android.intent.category.LAUNCHER" />
+    </intent-filter>
+        </activity>
 </application>
 
 </manifest>
