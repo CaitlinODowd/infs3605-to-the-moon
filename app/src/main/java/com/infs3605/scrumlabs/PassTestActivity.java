@@ -9,12 +9,14 @@ package com.infs3605.scrumlabs;
 // At least one number
 // At least one special character
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -34,6 +36,20 @@ public class PassTestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pass_test);
 
+        //Disclaimer pop-up alert
+        AlertDialog.Builder disclaimer = new AlertDialog.Builder(PassTestActivity.this);
+        disclaimer.setCancelable(true);
+        disclaimer.setTitle("Password Strength Tester Disclaimer");
+        disclaimer.setMessage("All data and passwords entered into the tester will not be saved or stored in the system. \n" +
+                        "Please note that you shouldn't give out your password details to anyone or websites unless trusted.");
+        //set OK button
+        disclaimer.setPositiveButton("I understand", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+            }
+        });
+        disclaimer.show();
+
         //initialise UI
         tvPassTestTitle = findViewById(R.id.tvPassTestTitle);
         tvPassTestQuestion = findViewById(R.id.tvPassTestQuestion);
@@ -49,6 +65,9 @@ public class PassTestActivity extends AppCompatActivity {
         bCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                tvWeak.setTextColor(Color.parseColor("#767676"));
+                tvMedium.setTextColor(Color.parseColor("#767676"));
+                tvStrong.setTextColor(Color.parseColor("#767676"));
                 String password = etPassword.getText().toString();
                 determineOutcome(password);
             }
