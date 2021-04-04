@@ -21,6 +21,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private CardView card_passtest;
+    private CardView card_quiz;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,12 +32,21 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("E-Senior");
 
-        //set on-click listener on cardview learning modules
+        //set on-click listener on cardview password test
         card_passtest = findViewById(R.id.card_passtest);
         card_passtest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HomeActivity.this, PassTestActivity.class));
+            }
+        });
+
+        //set on-click listener on cardview quiz
+        card_quiz = findViewById(R.id.card_quiz);
+        card_quiz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, QuizActivity.class));
             }
         });
 

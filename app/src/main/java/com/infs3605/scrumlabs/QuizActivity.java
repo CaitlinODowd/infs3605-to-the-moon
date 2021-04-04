@@ -42,21 +42,21 @@ public class QuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz);
 
         //intialise UI
-//        tvQuestionNum = findViewById(R.id.tvQuestionNum);
-//        tvQuestion = findViewById(R.id.tvQuestion);
-//        rgAnswers = findViewById(R.id.rgAnswers);
-//        rbAnswerA = findViewById(R.id.rbAnswerA);
-//        rbAnswerB = findViewById(R.id.rbAnswerB);
-//        rbAnswerC = findViewById(R.id.rbAnswerC);
-//        rbAnswerD = findViewById(R.id.rbAnswerD);
-//        btSubmit = findViewById(R.id.btSubmit);
+        tvQuestionNum = findViewById(R.id.tvQuestionNum);
+        tvQuestion = findViewById(R.id.tvQuestion);
+        rgAnswers = findViewById(R.id.rgAnswers);
+        rbAnswerA = findViewById(R.id.rbAnswerA);
+        rbAnswerB = findViewById(R.id.rbAnswerB);
+        rbAnswerC = findViewById(R.id.rbAnswerC);
+        rbAnswerD = findViewById(R.id.rbAnswerD);
+        btSubmit = findViewById(R.id.btSubmit);
 
         //add data into question and answer arrays and shuffle
         QuizQuestion thisSession = new QuizQuestion();
         questions = (ArrayList<QuizQuestion>) thisSession.getQuestions().clone();
         QuizAnswer thisAnswers = new QuizAnswer();
         answers = (ArrayList<QuizAnswer>) thisAnswers.getAnswers().clone();
-       // Collections.shuffle(questions);
+        Collections.shuffle(questions);
 
         //set up first question
         displayQuestion();

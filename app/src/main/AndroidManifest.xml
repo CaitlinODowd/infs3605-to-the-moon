@@ -17,7 +17,13 @@ package="com.infs3605.scrumlabs">
         android:label="@string/title_activity_pass_test"
         android:theme="@style/Theme.MainActivity.NoActionBar">
     </activity>
-    <activity android:name=".QuizActivity"></activity>
+    <activity android:name=".QuizActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
     <activity android:name=".SplashActivity">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
