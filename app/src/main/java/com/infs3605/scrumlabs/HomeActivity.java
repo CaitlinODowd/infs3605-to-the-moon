@@ -22,6 +22,7 @@ public class HomeActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private CardView card_passtest;
     private CardView card_quiz;
+    private CardView card_chatbot;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +31,7 @@ public class HomeActivity extends AppCompatActivity {
         //Initialise tool bar
         toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("E-Senior");
+        getSupportActionBar().setTitle("eSeniors");
 
         //set on-click listener on cardview password test
         card_passtest = findViewById(R.id.card_passtest);
@@ -47,6 +48,15 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HomeActivity.this, QuizActivity.class));
+            }
+        });
+
+        //set on-click listener on cardview chatbot
+        card_chatbot = findViewById(R.id.card_chatbot);
+        card_chatbot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, ChatActivity.class));
             }
         });
 
@@ -94,6 +104,10 @@ public class HomeActivity extends AppCompatActivity {
             case R.id.voiceAssist_toolbar:
                 //voice assistant actions
                 Toast.makeText(this,"voiceassist pressed",Toast.LENGTH_LONG).show();
+                startActivity(new Intent(getApplicationContext()
+                        ,ChatActivity.class));
+                overridePendingTransition(0,0);
+                return true;
             case R.id.setting_toolbar:
                 //setting actions
                 Toast.makeText(this,"setting pressed",Toast.LENGTH_LONG).show();
