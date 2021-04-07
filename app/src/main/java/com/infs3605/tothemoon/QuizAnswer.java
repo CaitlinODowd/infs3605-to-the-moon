@@ -1,4 +1,4 @@
-package com.infs3605.scrumlabs;
+package com.infs3605.tothemoon;
 
 import java.util.ArrayList;
 

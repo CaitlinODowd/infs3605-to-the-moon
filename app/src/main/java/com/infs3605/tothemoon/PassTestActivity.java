@@ -1,4 +1,4 @@
-package com.infs3605.scrumlabs;
+package com.infs3605.tothemoon;
 
 //This will be coded to show all errors with the password at once, instead of one at a time,
 //which the user might find annoying
@@ -13,12 +13,8 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 import android.widget.Button;

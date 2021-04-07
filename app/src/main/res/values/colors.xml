@@ -15,4 +15,7 @@
     <color name="nude">#FCECC9</color>
     <color name="light_nude">#FDF8F4</color>
     <color name="grey">#767676</color>
+
+    <color name="bg_bubble_self">#62caa6</color>
+    <color name="bg_bubble_watbot">#ecf0f1</color>
 </resources>

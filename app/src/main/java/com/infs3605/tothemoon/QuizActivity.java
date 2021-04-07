@@ -1,4 +1,4 @@
-package com.infs3605.scrumlabs;
+package com.infs3605.tothemoon;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,7 +10,6 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class QuizActivity extends AppCompatActivity {
     //set up UI

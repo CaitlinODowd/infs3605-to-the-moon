@@ -1,26 +1,10 @@
-package com.infs3605.scrumlabs;
+package com.infs3605.tothemoon;
 
 import android.content.Context;
-import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.net.InetAddress;
-
-import static com.infs3605.scrumlabs.AppDatabase.getDatabase;
+import static com.infs3605.tothemoon.AppDatabase.getDatabase;
 
 public class LoginUserDBTask extends AsyncTask<User, Boolean, Boolean> {
     private static final String TAG = "LoginUserTask";

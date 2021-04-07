@@ -1,4 +1,4 @@
-package com.infs3605.scrumlabs;
+package com.infs3605.tothemoon;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,7 +8,7 @@ import android.os.Handler;
 
 import java.util.concurrent.ExecutionException;
 
-import static com.infs3605.scrumlabs.AppDatabase.getDatabase;
+import static com.infs3605.tothemoon.AppDatabase.getDatabase;
 
 public class SplashActivity extends AppCompatActivity {
 

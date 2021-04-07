@@ -1,12 +1,9 @@
-package com.infs3605.scrumlabs;
+package com.infs3605.tothemoon;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
 
 @Entity
 public class User {

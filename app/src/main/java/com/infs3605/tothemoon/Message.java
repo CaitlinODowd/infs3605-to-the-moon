@@ -1,4 +1,4 @@
-package com.infs3605.scrumlabs;
+package com.infs3605.tothemoon;
 
 import com.ibm.watson.assistant.v2.model.RuntimeResponseGeneric;
 

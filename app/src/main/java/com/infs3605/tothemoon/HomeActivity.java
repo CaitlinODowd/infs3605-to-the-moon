@@ -1,4 +1,4 @@
-package com.infs3605.scrumlabs;
+package com.infs3605.tothemoon;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +20,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.concurrent.ExecutionException;
 
-import static com.infs3605.scrumlabs.AppDatabase.getDatabase;
+import static com.infs3605.tothemoon.AppDatabase.getDatabase;
 
 public class HomeActivity extends AppCompatActivity {
 

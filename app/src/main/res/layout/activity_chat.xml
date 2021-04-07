@@ -37,7 +37,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <EditText
-            android:id="@+id/inputEditText"
+            android:id="@+id/inputMessage"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="start"
