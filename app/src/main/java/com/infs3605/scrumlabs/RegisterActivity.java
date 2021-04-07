@@ -22,7 +22,7 @@ import org.json.JSONObject;
 public class RegisterActivity extends AppCompatActivity {
 
     Button bRegister;
-    EditText etRegisterEmail, etRegisterPassword, etRegisterConfirmPassword, etdRegisterDate;
+    EditText etRegisterEmail, etRegisterPassword, etRegisterConfirmPassword, etdRegisterDate, etRegisterFirstName, etRegisterLastName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +30,8 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         bRegister = findViewById(R.id.bRegister);
+        etRegisterFirstName = findViewById(R.id.etRegisterFirstName);
+        etRegisterLastName = findViewById(R.id.etRegisterLastName);
         etRegisterEmail = findViewById(R.id.etRegisterEmail);
         etRegisterPassword = findViewById(R.id.etRegisterPassword);
         etRegisterConfirmPassword = findViewById(R.id.etRegisterConfirmPassword);
@@ -38,7 +40,7 @@ public class RegisterActivity extends AppCompatActivity {
         bRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                registerUser(etRegisterEmail.getText().toString(), etRegisterPassword.getText().toString(), etRegisterConfirmPassword.getText().toString(), etdRegisterDate.getText().toString());
+                registerUser(etRegisterEmail.getText().toString(), etRegisterPassword.getText().toString(), etRegisterConfirmPassword.getText().toString(), etdRegisterDate.getText().toString(), etRegisterFirstName.getText().toString(), etRegisterLastName.getText().toString());
             }
         });
     }
@@ -98,7 +100,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
     };
 
-    private void registerUser(String email, String password, String confirmPassword, String DOB) {
+    private void registerUser(String email, String password, String confirmPassword, String DOB, String firstName, String lastName) {
         String postUrl = getString(R.string.eSeniorsRegisterUrl);
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
@@ -108,6 +110,8 @@ public class RegisterActivity extends AppCompatActivity {
             postData.put("password", password);
             postData.put("confirmPassword", confirmPassword);
             postData.put("DOB", DOB);
+            postData.put("firstName", firstName);
+            postData.put("lastName", lastName);
 
         } catch (JSONException e) {
             e.printStackTrace();

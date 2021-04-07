@@ -39,7 +39,7 @@ def registerUser():
     if not application.auth.methods.isPasswordCorrect(postReq['password'], postReq['confirmPassword']):
         return '{"status": "405", "error": "Passwords do not match!"}'
 
-    application.auth.db.insertUser(postReq['email'], postReq['password'], postReq['DOB'])
+    application.auth.db.insertUser(postReq['email'], postReq['password'], postReq['DOB'], postReq['firstName'], postReq['lastName'])
 
     return application.auth.db.getUser(postReq['email']).toJson()
 

@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         bLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(false) {
+                if(true) {
                     loginUserOnline(etLoginEmail.getText().toString(), etLoginPassword.getText().toString());
                 } else {
                     loginUserOffline(etLoginEmail.getText().toString(), etLoginPassword.getText().toString());

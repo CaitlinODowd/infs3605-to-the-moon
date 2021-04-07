@@ -25,8 +25,8 @@ def getUser(givenEmail):
     user = application.shared.models.User.query.filter_by(email = givenEmail.lower()).first()
     return user
 
-def insertUser(email, password, DOB):
-    newUser = application.shared.models.User(email=email, firstName='New', lastName='User', DOB=DOB)
+def insertUser(email, password, DOB, firstName, lastName):
+    newUser = application.shared.models.User(email=email, firstName=firstName, lastName=lastName, DOB=DOB)
     newUser.set_password(password)
     application.shared.models.db.session.add(newUser)
     application.shared.models.db.session.commit()
