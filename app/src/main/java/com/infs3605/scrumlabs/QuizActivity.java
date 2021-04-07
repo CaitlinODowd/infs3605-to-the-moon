@@ -28,7 +28,7 @@ public class QuizActivity extends AppCompatActivity {
     public ArrayList<QuizAnswer> answers;
     int questionCounter = 0;
     int userScore = 0;
-    String userAnswer;
+    String userAnswer = "";
 
     //FINAL variables
     public static final int LAST_QUESTION = 5;
@@ -56,7 +56,7 @@ public class QuizActivity extends AppCompatActivity {
         questions = (ArrayList<QuizQuestion>) thisSession.getQuestions().clone();
         QuizAnswer thisAnswers = new QuizAnswer();
         answers = (ArrayList<QuizAnswer>) thisAnswers.getAnswers().clone();
-        Collections.shuffle(questions);
+        //Collections.shuffle(questions);
 
         //set up first question
         displayQuestion();
@@ -68,6 +68,7 @@ public class QuizActivity extends AppCompatActivity {
                 int id = group.getCheckedRadioButtonId();
                 RadioButton selected = (RadioButton) findViewById(checkedId);
                 userAnswer = selected.getText().toString();
+                System.out.print("SElected answer is: " + userAnswer);
             }
         });
 
@@ -79,7 +80,9 @@ public class QuizActivity extends AppCompatActivity {
                 //if user selects answer (correct or not) they move to next question
                 if (questionResult != NO_ANS) {
                     //add one to questionCounter
+                    System.out.println("question counter plus one");
                     questionCounter++;
+                    System.out.println("question counter: " + questionCounter);
                     //if user has not put in answer, they will stay on quiz question
                 } else {
                     return;
@@ -102,6 +105,7 @@ public class QuizActivity extends AppCompatActivity {
 
     public void displayQuestion () {
         //set up questionNum and question textviews
+        System.out.println("question counter: " + questionCounter);
         tvQuestionNum.setText("Question " + String.valueOf(questionCounter + 1));
         tvQuestion.setText(questions.get(questionCounter).getQuestionText());
 
@@ -115,14 +119,20 @@ public class QuizActivity extends AppCompatActivity {
     public int checkAnswer () {
         //if user does not check answer
         if (userAnswer.equals("")) {
+            System.out.println("no answer triggered");
             return NO_ANS;
         }
         //if user answer is correct
         else if (userAnswer.equals(answers.get(questionCounter).getAnswerCorrect())) {
+            System.out.println("User answer is " + userAnswer);
+            System.out.println("correct answer is " + answers.get(questionCounter).getAnswerCorrect());
             userScore++;
+            System.out.println("correct answer triggered");
+            System.out.println("user score is : " + userScore);
             return CORRECT_ANS;
         //if user answer is incorrect
         } else {
+            System.out.println("incorrect answer triggered");
             return INCORRECT_ANS;
         }
     }
