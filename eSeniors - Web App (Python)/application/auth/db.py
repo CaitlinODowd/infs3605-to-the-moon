@@ -9,12 +9,24 @@ def getAllUsers():
     return user
 
 ## Validates user's credentials (exist & correct)
-def isValidUser(givenUsername, givenPassword):
-    user = application.shared.models.User.query.filter_by(username = givenUsername).first()
+def isValidUser(givenEmail, givenPassword):
+    user = application.shared.models.User.query.filter_by(email = givenEmail.lower()).first()
     if user and user.check_password(givenPassword):
         return True
     return False
 
-def getUserToken(givenUsername):
-    user = application.shared.models.User.query.filter_by(username = givenUsername).first()
-    return user.token
+def isUserExist(givenEmail):
+    user = application.shared.models.User.query.filter_by(email = givenEmail.lower()).first()
+    if user:
+        return True
+    return False
+
+def getUser(givenEmail):
+    user = application.shared.models.User.query.filter_by(email = givenEmail.lower()).first()
+    return user
+
+def insertUser(email, password, DOB):
+    newUser = application.shared.models.User(email=email, firstName='New', lastName='User', DOB=DOB)
+    newUser.set_password(password)
+    application.shared.models.db.session.add(newUser)
+    application.shared.models.db.session.commit()

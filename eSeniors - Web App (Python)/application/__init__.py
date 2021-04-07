@@ -29,7 +29,7 @@ def create_app():
         ## Populate DB on creation
         ## Attempt to create sample data
         try:
-            newUser = User(username='example')
+            newUser = User(email='Test@eSeniors.com', firstName='John', lastName='Doe', DOB='07/07/1977')
             newUser.set_password('example')
             db.session.add(newUser)
             db.session.commit()
