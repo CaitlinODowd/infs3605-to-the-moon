@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> <!--Watson Assistant service credentials-->
+    <!-- REPLACE `ASSISTANT_ID_HERE` with ID of the Assistant to use -->
+    <string name="assistant_id">8e070d90-1199-44fe-be16-06dc34c13a47</string>
+
+    <!-- REPLACE `ASSISTANT_API_KEY_HERE` with Watson Assistant service API Key-->
+    <string name="assistant_apikey">RlWhtNnwKEahzS7wuL84VVWsSam9gjiT0kH5oNAUafgd</string>
+
+    <!-- REPLACE the URL with the one provided in the credentials of the service you created-->
+    <string name="assistant_url">https://api.au-syd.assistant.watson.cloud.ibm.com/instances/9bcccd65-d48d-4039-8e3e-8403a7ae532d</string>
+
+</resources>

@@ -23,6 +23,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -89,6 +91,7 @@ public class ChatActivity extends AppCompatActivity {
         createServices();
         sendMessage();
     }
+
     // Sending a message to Watson Assistant Service
     private void sendMessage() {
 
@@ -127,7 +130,7 @@ public class ChatActivity extends AppCompatActivity {
                             .sessionId(watsonAssistantSession.getResult().getSessionId())
                             .build();
                     Response<MessageResponse> response = watsonAssistant.message(options).execute();
-                    Log.i(TAG, "run: " + response.getResult());
+                    Log.i(TAG, "IBM Watson run: " + response.getResult());
                     if (response != null &&
                             response.getResult().getOutput() != null &&
                             !response.getResult().getOutput().getGeneric().isEmpty()) {
@@ -202,7 +205,7 @@ public class ChatActivity extends AppCompatActivity {
 
     private void createServices() {
         watsonAssistant = new Assistant("2020-09-24", new IamAuthenticator(getString(R.string.ibm_watson_apikey)));
-        watsonAssistant.setServiceUrl(getString(R.string.ibm_watson_assistant_id));
+        watsonAssistant.setServiceUrl(getString(R.string.ibm_watson_url));
 
        /* textToSpeech = new TextToSpeech(new IamAuthenticator((mContext.getString(R.string.TTS_apikey))));
         textToSpeech.setServiceUrl(mContext.getString(R.string.TTS_url));
