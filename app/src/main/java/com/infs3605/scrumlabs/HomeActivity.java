@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
@@ -17,16 +18,25 @@ import androidx.cardview.widget.CardView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.concurrent.ExecutionException;
+
+import static com.infs3605.scrumlabs.AppDatabase.getDatabase;
+
 public class HomeActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private CardView card_passtest;
     private CardView card_quiz;
     private CardView card_chatbot;
+    private TextView tvWelcome;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        tvWelcome = findViewById(R.id.tvWelcome);
+        tvWelcome.setText("Welcome back " + getCurrentUserFirstName() + "!");
 
         //Initialise tool bar
         toolbar = findViewById(R.id.main_toolbar);
@@ -72,7 +82,8 @@ public class HomeActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()){
                     case R.id.nav_back:
                         //not sure which one works or finish();
-                        onBackPressed();
+                        //onBackPressed();
+                        launchLoginActivity();
                         overridePendingTransition(0,0);
                         return true;
 
@@ -113,5 +124,27 @@ public class HomeActivity extends AppCompatActivity {
                 Toast.makeText(this,"setting pressed",Toast.LENGTH_LONG).show();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private String getCurrentUserFirstName() {
+        User currentUser = null;
+
+        getCurrentUserTask currentUserTask =  new getCurrentUserTask();
+        currentUserTask.setDatabase(getDatabase(getApplicationContext()));
+        try {
+            currentUser = currentUserTask.execute().get();
+            return currentUser.getFirstName();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return "Error!";
+    }
+
+    private void launchLoginActivity() {
+        Intent loginIntent = new Intent(this, LoginActivity.class);
+        startActivity(loginIntent);
     }
 }
