@@ -20,22 +20,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-     <ScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/inputRelativeLayout">
-
-        <TextView
-            android:id="@+id/messagesTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:scrollbarSize="16sp"/>
-
-    </ScrollView>
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        app:layout_constraintTop_toBottomOf="@id/textView" />
 
 
     <RelativeLayout
@@ -47,7 +37,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <EditText
-            android:id="@+id/inputEditText"
+            android:id="@+id/inputMessage"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="start"
@@ -62,15 +52,16 @@
             android:layout_toLeftOf="@id/sendButton"
             android:layout_alignParentLeft="true" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/sendButton"
-            android:layout_width="70dp"
-            android:layout_height="match_parent"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:hint="Send"
-            android:textColor="@color/white"
-            app:backgroundTint="@color/orange" />
+            android:background="#00FFFFFF"
+            android:src="@mipmap/ic_send"
+            android:textColor="@color/white" />
+
     </RelativeLayout>
 
 
