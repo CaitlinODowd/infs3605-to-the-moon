@@ -24,78 +24,76 @@
         android:id="@+id/tvQuestionNum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="asdfasd"
-        app:layout_constraintEnd_toStartOf="@+id/tvQuestion"
-        app:layout_constraintHorizontal_bias="0.455"
+        android:layout_marginTop="20dp"
+        android:text="Question ?"
+        android:textColor="@color/orange"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/tvQuestion"
-        android:layout_width="158dp"
-        android:layout_height="24dp"
-        android:text="Question"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvQuestionNum"
-        app:layout_constraintTop_toTopOf="@+id/tvQuestionNum" />
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="36dp"
+        android:gravity="center_horizontal"
+        android:text="Question Text"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvQuestionNum" />
 
     <RadioGroup
         android:id="@+id/rgAnswers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvQuestionNum" />
+        android:layout_marginStart="93dp"
+        android:layout_marginLeft="93dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="@+id/tvQuestion"
+        app:layout_constraintTop_toBottomOf="@+id/tvQuestion">
 
-    <RadioButton
-        android:id="@+id/rbAnswerA"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="RadioButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rgAnswers" />
+        <RadioButton
+            android:id="@+id/rbAnswerA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="RadioButton" />
 
-    <RadioButton
-        android:id="@+id/rbAnswerB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="RadioButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rbAnswerA" />
+        <RadioButton
+            android:id="@+id/rbAnswerB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RadioButton" />
 
-    <RadioButton
-        android:id="@+id/rbAnswerC"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="RadioButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rbAnswerB" />
+        <RadioButton
+            android:id="@+id/rbAnswerC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RadioButton" />
 
-    <RadioButton
-        android:id="@+id/rbAnswerD"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="RadioButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rbAnswerC" />
+        <RadioButton
+            android:id="@+id/rbAnswerD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RadioButton" />
+
+    </RadioGroup>
 
     <Button
         android:id="@+id/btSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
         android:background="@drawable/roundbutton"
         android:text="Submit"
+        android:textSize="30sp"
         app:backgroundTint="#FD6752"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rbAnswerD"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/rgAnswers" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

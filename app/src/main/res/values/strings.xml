@@ -11,4 +11,12 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_chat">ChatActivity</string>
+
+    <string name="ibm_watson_apikey">RlWhtNnwKEahzS7wuL84VVWsSam9gjiT0kH5oNAUafgd</string>
+    <string name="ibm_watson_url">https://api.au-syd.assistant.watson.cloud.ibm.com/instances/9bcccd65-d48d-4039-8e3e-8403a7ae532d</string>
+    <string name="ibm_watson_assistant_id">8e070d90-1199-44fe-be16-06dc34c13a47</string>
+
+    <string name="eSeniorsLoginUrl">http://eseniors.pythonanywhere.com/auth/device/</string>
+    <string name="eSeniorsRegisterUrl">http://eseniors.pythonanywhere.com/auth/register/</string>
+    <string name="eSeniorsUrl">http://eseniors.pythonanywhere.com/</string>
 </resources>
