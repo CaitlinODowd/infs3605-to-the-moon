@@ -61,63 +61,87 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="15dp"
+            android:layout_margin="5dp"
             android:gravity="center"
             android:text="REGISTER AN ACCOUNT"
             android:textColor="@color/black"
-            android:textSize="30sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etRegisterFirstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_input_bg"
+            android:drawablePadding="8dp"
+            android:ems="10"
+            android:hint="First Name"
+            android:inputType="textPersonName"
+            android:padding="12dp" />
+
+        <EditText
+            android:id="@+id/etRegisterLastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rounded_input_bg"
+            android:drawablePadding="8dp"
+            android:ems="10"
+            android:hint="Surname"
+            android:inputType="textPersonName"
+            android:padding="12dp" />
 
         <EditText
             android:id="@+id/etRegisterEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:background="@drawable/rounded_input_bg"
             android:drawableLeft="@drawable/email32"
             android:drawablePadding="8dp"
             android:ems="10"
             android:hint="E-Mail"
             android:inputType="textPersonName"
-            android:padding="15dp" />
+            android:padding="12dp" />
 
         <EditText
             android:id="@+id/etRegisterPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/rounded_input_bg"
             android:drawableLeft="@drawable/lock32"
             android:drawablePadding="8dp"
             android:ems="10"
             android:hint="Password"
             android:inputType="textPassword"
-            android:padding="15dp" />
+            android:padding="12dp" />
 
         <EditText
             android:id="@+id/etRegisterConfirmPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/rounded_input_bg"
             android:drawableLeft="@drawable/lock32"
             android:drawablePadding="8dp"
             android:ems="10"
             android:hint="Confirm Password"
             android:inputType="textPassword"
-            android:padding="15dp" />
+            android:padding="12dp" />
 
         <EditText
             android:id="@+id/etdRegisterDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/rounded_input_bg"
             android:drawableLeft="@drawable/birthday32"
             android:drawablePadding="8dp"
             android:ems="10"
             android:hint="Birthday (DD/MM/YYYY)"
             android:inputType="date"
-            android:padding="15dp"
+            android:padding="12dp"
             android:textSize="18sp" />
 
         <Button
