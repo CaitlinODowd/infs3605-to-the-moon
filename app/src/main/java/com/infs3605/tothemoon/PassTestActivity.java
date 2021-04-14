@@ -19,11 +19,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class PassTestActivity extends AppCompatActivity {
     Button bCheck;
     EditText etPassword;
+    ImageView ivCyrusPass;
     TextView tvOutcome, tvWeak, tvStrong, tvMedium, tvStrength, tvPassTestTitle, tvPassTestQuestion;
 
 
@@ -56,6 +58,7 @@ public class PassTestActivity extends AppCompatActivity {
         bCheck = findViewById(R.id.bCheck);
         etPassword = findViewById(R.id.etPassword);
         tvOutcome = findViewById(R.id.tvOutcome);
+        ivCyrusPass = findViewById(R.id.ivCyrusPass);
 
         //check password when button is clicked
         bCheck.setOnClickListener(new View.OnClickListener() {
@@ -108,12 +111,14 @@ public class PassTestActivity extends AppCompatActivity {
             tvStrength.setText("VERY WEAK");
             tvStrength.setTextColor(Color.RED);
             tvWeak.setTextColor(Color.RED);
+            ivCyrusPass.setImageResource(R.drawable.cyrus_passweak);
         }
         else if (falseCount == 1 || falseCount ==2 || falseCount ==3){
             tvStrength.setText("MEDIUM");
             tvStrength.setTextColor(Color.parseColor("#ffa500"));
             tvWeak.setTextColor(Color.RED);
             tvMedium.setTextColor(Color.parseColor("#ffa500"));
+            ivCyrusPass.setImageResource(R.drawable.cyrus_passmedium);
         }
         else if(falseCount == 0) {
             outcome = "No errors with password";
@@ -122,6 +127,7 @@ public class PassTestActivity extends AppCompatActivity {
             tvWeak.setTextColor(Color.RED);
             tvMedium.setTextColor(Color.parseColor("#ffa500"));
             tvStrong.setTextColor(Color.GREEN);
+            ivCyrusPass.setImageResource(R.drawable.cyrus_passstrong);
         }
 
         tvOutcome.setText(outcome);
