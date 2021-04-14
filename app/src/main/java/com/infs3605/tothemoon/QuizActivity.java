@@ -5,22 +5,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class QuizActivity extends AppCompatActivity {
     //set up UI
     TextView tvQuestion;
-    TextView tvQuestionNum;
-    RadioGroup rgAnswers;
-    RadioButton rbAnswerA;
-    RadioButton rbAnswerB;
-    RadioButton rbAnswerC;
-    RadioButton rbAnswerD;
+    TextView tvTitle;
     Button btSubmit;
+    Button btNext;
+    ImageView ivRef;
+    RadioGroup rgAnswers;
+    RadioButton rbYes;
+    RadioButton rbNo;
 
     //set up question and answer arrays
     public ArrayList<QuizQuestion> questions;
@@ -28,6 +30,8 @@ public class QuizActivity extends AppCompatActivity {
     int questionCounter = 0;
     int userScore = 0;
     String userAnswer = "";
+    int userResult = 0;
+    int submitClick = 0;
 
     //FINAL variables
     public static final int LAST_QUESTION = 5;
@@ -41,21 +45,20 @@ public class QuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz);
 
         //intialise UI
-        tvQuestionNum = findViewById(R.id.tvQuestionNum);
+        tvTitle = findViewById(R.id.tvTitle);
         tvQuestion = findViewById(R.id.tvQuestion);
-        rgAnswers = findViewById(R.id.rgAnswers);
-        rbAnswerA = findViewById(R.id.rbAnswerA);
-        rbAnswerB = findViewById(R.id.rbAnswerB);
-        rbAnswerC = findViewById(R.id.rbAnswerC);
-        rbAnswerD = findViewById(R.id.rbAnswerD);
         btSubmit = findViewById(R.id.btSubmit);
+        btNext = findViewById(R.id.btNext);
+        ivRef = findViewById(R.id.ivRef);
+        rgAnswers = findViewById(R.id.rgAnswers);
+        rbYes = findViewById(R.id.rbYes);
+        rbNo = findViewById(R.id.rbNo);
 
-        //add data into question and answer arrays and shuffle
+        //add data into question and answer arrays
         QuizQuestion thisSession = new QuizQuestion();
         questions = (ArrayList<QuizQuestion>) thisSession.getQuestions().clone();
         QuizAnswer thisAnswers = new QuizAnswer();
         answers = (ArrayList<QuizAnswer>) thisAnswers.getAnswers().clone();
-        //Collections.shuffle(questions);
 
         //set up first question
         displayQuestion();
@@ -71,67 +74,83 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
-        //button listener
+        btNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //check if user has submitted an answer
+                if(userResult == 0) {
+                    Toast.makeText(QuizActivity.this, "Please select an answer and press Submit", Toast.LENGTH_SHORT).show();
+                }
+                //check if that was last question
+                else if (questionCounter == LAST_QUESTION) {
+                    //launchResultActivity();
+                } else {
+                    rbYes.setChecked(false);
+                    rbNo.setChecked(false);
+                    userAnswer = "";
+                    userResult = 0;
+                    submitClick = 0;
+                    displayQuestion();
+                }
+            }
+        });
+        //if user selects correct answer
         btSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int questionResult = checkAnswer();
-                //if user selects answer (correct or not) they move to next question
-                if (questionResult != NO_ANS) {
-                    //add one to questionCounter
-                    System.out.println("question counter plus one");
-                    questionCounter++;
-                    System.out.println("question counter: " + questionCounter);
-                    //if user has not put in answer, they will stay on quiz question
-                } else {
-                    return;
-                }
+                userResult = checkAnswer();
+                //check if submit has already been clicked
+                if (submitClick > 0) {
 
-                //check if that was last question
-                if (questionCounter == LAST_QUESTION) {
-                    //launchResultActivity();
+                }
+                else if (userResult == NO_ANS) {
+                    //User stays on question page
+                    Toast.makeText(QuizActivity.this, "Please select an Answer!", Toast.LENGTH_SHORT).show();
+                }
+                //if user selects answer (correct or not) they move to next question
+                else if (userResult == CORRECT_ANS) {
+                    //add one to questionCounter
+                    questionCounter++;
+                    submitClick += 1;
+                    tvQuestion.setText("");
+                    tvQuestion.setText(answers.get(questionCounter).getAnswerCorrectOutcome());
+                    ivRef.setImageResource(answers.get(questionCounter).getAnswerImage());
                 } else {
-                    rbAnswerA.setChecked(false);
-                    rbAnswerB.setChecked(false);
-                    rbAnswerC.setChecked(false);
-                    rbAnswerD.setChecked(false);
-                    userAnswer = "";
-                    displayQuestion();
+                    questionCounter++;
+                    submitClick += 1;
+                    tvQuestion.setText("");
+                    tvQuestion.setText(answers.get(questionCounter).getAnswerIncorrectOutcome());
+                    ivRef.setImageResource(answers.get(questionCounter).getAnswerImage());
                 }
             }
         });
     }
 
     public void displayQuestion () {
-        //set up questionNum and question textviews
-        System.out.println("question counter: " + questionCounter);
-        tvQuestionNum.setText("Question " + String.valueOf(questionCounter + 1));
+        //set up questionTitle and question textviews
+        //System.out.println("question counter: " + questionCounter);
+        tvTitle.setText("Question " + String.valueOf(questionCounter + 1));
         tvQuestion.setText(questions.get(questionCounter).getQuestionText());
-
-        //get answers to associated question
-        rbAnswerA.setText(answers.get(questionCounter).getAnswerA());
-        rbAnswerB.setText(answers.get(questionCounter).getAnswerB());
-        rbAnswerC.setText(answers.get(questionCounter).getAnswerC());
-        rbAnswerD.setText(answers.get(questionCounter).getAnswerD());
+        ivRef.setImageResource(questions.get(questionCounter).getQuestionImage());
     }
 
     public int checkAnswer () {
         //if user does not check answer
         if (userAnswer.equals("")) {
-            System.out.println("no answer triggered");
+            //System.out.println("no answer triggered");
             return NO_ANS;
         }
         //if user answer is correct
         else if (userAnswer.equals(answers.get(questionCounter).getAnswerCorrect())) {
-            System.out.println("User answer is " + userAnswer);
-            System.out.println("correct answer is " + answers.get(questionCounter).getAnswerCorrect());
+//            System.out.println("User answer is " + userAnswer);
+//            System.out.println("correct answer is " + answers.get(questionCounter).getAnswerCorrect());
             userScore++;
-            System.out.println("correct answer triggered");
-            System.out.println("user score is : " + userScore);
+//            System.out.println("correct answer triggered");
+//            System.out.println("user score is : " + userScore);
             return CORRECT_ANS;
         //if user answer is incorrect
         } else {
-            System.out.println("incorrect answer triggered");
+//            System.out.println("incorrect answer triggered");
             return INCORRECT_ANS;
         }
     }
