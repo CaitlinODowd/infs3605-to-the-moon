@@ -37,7 +37,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         tvWelcome = findViewById(R.id.tvWelcome);
-        tvWelcome.setText("Welcome back " + getCurrentUserFirstName() + "!");
+        tvWelcome.setText("Welcome back" + getCurrentUserFirstName() + "!");
 
         //Initialise tool bar
         toolbar = findViewById(R.id.main_toolbar);

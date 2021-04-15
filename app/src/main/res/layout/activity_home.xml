@@ -29,7 +29,7 @@ android:id="@+id/main_toolbar">
     <TextView
         android:id="@+id/tvWelcome"
         android:layout_width="241dp"
-        android:layout_height="50dp"
+        android:layout_height="64dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="24dp"
@@ -37,7 +37,7 @@ android:id="@+id/main_toolbar">
         android:foregroundGravity="center"
         android:gravity="center"
         android:text="Welcome Back!"
-        android:textSize="25sp"
+        android:textSize="22sp"
         android:textStyle="bold"
         app:fontFamily="@font/oxygen_bold"
         app:layout_constraintEnd_toStartOf="@+id/ivHomeIcon"

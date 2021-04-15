@@ -11,6 +11,7 @@ package com.infs3605.tothemoon;
 
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
@@ -21,6 +22,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.concurrent.ExecutionException;
+
+import static com.infs3605.tothemoon.AppDatabase.getDatabase;
 
 public class PassTestActivity extends AppCompatActivity {
     Button bCheck;
@@ -33,6 +38,7 @@ public class PassTestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pass_test);
+
 
         //Disclaimer pop-up alert
         AlertDialog.Builder disclaimer = new AlertDialog.Builder(PassTestActivity.this);
@@ -68,6 +74,8 @@ public class PassTestActivity extends AppCompatActivity {
                 tvMedium.setTextColor(Color.parseColor("#767676"));
                 tvStrong.setTextColor(Color.parseColor("#767676"));
                 String password = etPassword.getText().toString();
+                Drawable draw_speech = getResources().getDrawable(R.drawable.speech_pass);
+                tvOutcome.setBackground(draw_speech);
                 determineOutcome(password);
             }
         });
@@ -75,34 +83,34 @@ public class PassTestActivity extends AppCompatActivity {
 
     public void determineOutcome (String password) {
         int falseCount = 0;
-        String outcome = "Your password needs:\n";
+        String outcome = "\n  " + " Let's make your password invincible!\n  The password should be:\n";
 
         //convert to char array
         char[] passArray = password.toCharArray();
 
         //check outcomes of all tests
         if (!checkLength(passArray)) {
-            outcome += "- To be at least 8 characters long\n";
+            outcome += "  - at least 8 characters long!\n";
             falseCount += 1;
         }
 
         if (!checkUpperCase(passArray)) {
-            outcome += "- To contain at least one capital letter\n";
+            outcome += "  - at least one capital letter!\n";
             falseCount += 1;
         }
 
         if (!checkLowerCase(passArray)) {
-            outcome += "- To contain at least one lower case letter\n";
+            outcome += "  - at least one lower case letter!\n";
             falseCount += 1;
         }
 
         if (!checkNumber(passArray)) {
-            outcome += "- To contain at least one number\n";
+            outcome += "  - at least one number!\n";
             falseCount += 1;
         }
 
         if (!checkSymbol(passArray)) {
-            outcome += "- To contain at least one special character\n";
+            outcome += "  - at least one special characters!\n";
             falseCount += 1;
         }
 
@@ -121,7 +129,7 @@ public class PassTestActivity extends AppCompatActivity {
             ivCyrusPass.setImageResource(R.drawable.cyrus_passmedium);
         }
         else if(falseCount == 0) {
-            outcome = "No errors with password";
+            outcome = "YAY!!\n Your password is invincible!!";
             tvStrength.setText("VERY STRONG");
             tvStrength.setTextColor(Color.GREEN);
             tvWeak.setTextColor(Color.RED);
@@ -191,6 +199,6 @@ public class PassTestActivity extends AppCompatActivity {
             }
         }
         return false;
-    }
 
+    }
 }
