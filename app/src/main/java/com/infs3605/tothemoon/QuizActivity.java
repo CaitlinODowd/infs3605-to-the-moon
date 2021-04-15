@@ -2,6 +2,7 @@ package com.infs3605.tothemoon;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +21,7 @@ public class QuizActivity extends AppCompatActivity {
     Button btSubmit;
     Button btNext;
     ImageView ivRef;
+    ImageView imageCyrus;
     RadioGroup rgAnswers;
     RadioButton rbYes;
     RadioButton rbNo;
@@ -31,7 +33,6 @@ public class QuizActivity extends AppCompatActivity {
     int userScore = 0;
     String userAnswer = "";
     int userResult = 0;
-    int submitClick = 0;
 
     //FINAL variables
     public static final int LAST_QUESTION = 5;
@@ -50,6 +51,7 @@ public class QuizActivity extends AppCompatActivity {
         btSubmit = findViewById(R.id.btSubmit);
         btNext = findViewById(R.id.btNext);
         ivRef = findViewById(R.id.ivRef);
+        imageCyrus = findViewById(R.id.imageCyrus);
         rgAnswers = findViewById(R.id.rgAnswers);
         rbYes = findViewById(R.id.rbYes);
         rbNo = findViewById(R.id.rbNo);
@@ -77,19 +79,18 @@ public class QuizActivity extends AppCompatActivity {
         btNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //check if user has submitted an answer
+                //check if user has not submitted an answer
                 if(userResult == 0) {
                     Toast.makeText(QuizActivity.this, "Please select an answer and press Submit", Toast.LENGTH_SHORT).show();
                 }
                 //check if that was last question
                 else if (questionCounter == LAST_QUESTION) {
-                    //launchResultActivity();
+                    launchQuizResultActivity();
                 } else {
                     rbYes.setChecked(false);
                     rbNo.setChecked(false);
                     userAnswer = "";
                     userResult = 0;
-                    submitClick = 0;
                     displayQuestion();
                 }
             }
@@ -98,30 +99,31 @@ public class QuizActivity extends AppCompatActivity {
         btSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                userResult = checkAnswer();
-                //check if submit has already been clicked
-                if (submitClick > 0) {
+                //check if user has already answered
+                if (userResult != 0) {
 
-                }
-                else if (userResult == NO_ANS) {
-                    //User stays on question page
-                    Toast.makeText(QuizActivity.this, "Please select an Answer!", Toast.LENGTH_SHORT).show();
-                }
-                //if user selects answer (correct or not) they move to next question
-                else if (userResult == CORRECT_ANS) {
-                    //add one to questionCounter
-                    questionCounter++;
-                    submitClick += 1;
-                    tvQuestion.setText("");
-                    tvQuestion.setText(answers.get(questionCounter).getAnswerCorrectOutcome());
-                    ivRef.setImageResource(answers.get(questionCounter).getAnswerImage());
+                    //if user hasn't submitted an answer yet
                 } else {
-                    questionCounter++;
-                    submitClick += 1;
-                    tvQuestion.setText("");
-                    tvQuestion.setText(answers.get(questionCounter).getAnswerIncorrectOutcome());
-                    ivRef.setImageResource(answers.get(questionCounter).getAnswerImage());
+                    userResult = checkAnswer();
+                    if (userResult == NO_ANS) {
+                        //User stays on question page
+                        Toast.makeText(QuizActivity.this, "Please select an Answer!", Toast.LENGTH_SHORT).show();
+                    }
+                    //if user selects answer (correct or not) they move to next question
+                    else if (userResult == CORRECT_ANS) {
+                        //add one to questionCounter
+                        tvQuestion.setText("");
+                        tvQuestion.setText(answers.get(questionCounter).getAnswerCorrectOutcome());
+                        ivRef.setImageResource(answers.get(questionCounter).getAnswerImage());
+                        questionCounter++;
+                    } else {
+                        tvQuestion.setText("");
+                        tvQuestion.setText(answers.get(questionCounter).getAnswerIncorrectOutcome());
+                        ivRef.setImageResource(answers.get(questionCounter).getAnswerImage());
+                        questionCounter++;
+                    }
                 }
+
             }
         });
     }
@@ -153,5 +155,13 @@ public class QuizActivity extends AppCompatActivity {
 //            System.out.println("incorrect answer triggered");
             return INCORRECT_ANS;
         }
+    }
+
+    public void launchQuizResultActivity() {
+        Intent intent = new Intent(this, QuizResult.class);
+        Bundle extras = new Bundle();
+        extras.putInt("USER_SCORE", userScore);
+        intent.putExtras(extras);
+        startActivity(intent);
     }
 }

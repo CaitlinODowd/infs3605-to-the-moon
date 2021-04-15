@@ -53,7 +53,7 @@ public class QuizQuestion {
         questions.add(new QuizQuestion(1, "Would it be safe to click 'Reset Password'?", R.drawable.q_2));
         questions.add(new QuizQuestion(2, "Is this a legitimate email sent by Coles?", R.drawable.q_3));
         questions.add(new QuizQuestion(3, "Would this be an SMS sent by the Australian Government?", R.drawable.q_4));
-        questions.add(new QuizQuestion(4, "Question 5", R.drawable.q_4));
+        questions.add(new QuizQuestion(4, "Is this a a real security email from Sun Trust?", R.drawable.q_5));
         return questions;
     }
 
