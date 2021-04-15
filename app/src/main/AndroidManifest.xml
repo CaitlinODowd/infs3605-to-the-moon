@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MainActivity"
         android:usesCleartextTraffic="true">
-        <activity android:name=".QuizResult"></activity>
+        <activity android:name=".RiskAssessmentResultActivity"></activity>
+        <activity android:name=".RiskAssessmentActivity" />
+        <activity android:name=".QuizResult" />
         <activity
             android:name=".ChatActivity"
             android:label="@string/title_activity_chat"
@@ -22,7 +24,7 @@
             android:name=".PassTestActivity"
             android:label="@string/title_activity_pass_test"
             android:theme="@style/Theme.MainActivity.NoActionBar" />
-        <activity android:name=".QuizActivity"></activity>
+        <activity android:name=".QuizActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

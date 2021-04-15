@@ -28,6 +28,7 @@ public class HomeActivity extends AppCompatActivity {
     private CardView card_passtest;
     private CardView card_quiz;
     private CardView card_chatbot;
+    private CardView card_riskassess;
     private TextView tvWelcome;
 
     @Override
@@ -67,6 +68,15 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HomeActivity.this, ChatActivity.class));
+            }
+        });
+
+        //set on-click listener on cardview risk assessment
+        card_riskassess = findViewById(R.id.card_riskassess);
+        card_riskassess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, RiskAssessmentActivity.class));
             }
         });
 

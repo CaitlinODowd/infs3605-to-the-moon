@@ -52,6 +52,7 @@ public class QuizActivity extends AppCompatActivity {
         btNext = findViewById(R.id.btNext);
         ivRef = findViewById(R.id.ivRef);
         imageCyrus = findViewById(R.id.imageCyrus);
+        imageCyrus.setImageResource(R.drawable.cyrus);
         rgAnswers = findViewById(R.id.rgAnswers);
         rbYes = findViewById(R.id.rbYes);
         rbNo = findViewById(R.id.rbNo);
@@ -130,7 +131,6 @@ public class QuizActivity extends AppCompatActivity {
 
     public void displayQuestion () {
         //set up questionTitle and question textviews
-        //System.out.println("question counter: " + questionCounter);
         tvTitle.setText("Question " + String.valueOf(questionCounter + 1));
         tvQuestion.setText(questions.get(questionCounter).getQuestionText());
         ivRef.setImageResource(questions.get(questionCounter).getQuestionImage());

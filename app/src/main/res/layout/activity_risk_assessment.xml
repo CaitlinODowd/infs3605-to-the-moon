@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFEFA"
+    tools:context=".RiskAssessmentActivity">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="414dp"
+        android:layout_height="62dp"
+        android:background="#E86C5B"
+        android:gravity="center"
+        android:text="User Assessment"
+        android:textColor="#FFFFFF"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvQuestion"
+        android:layout_width="227dp"
+        android:layout_height="183dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
+        android:text="Question Text"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/imageCyrus"
+        app:layout_constraintTop_toTopOf="@+id/imageCyrus" />
+
+    <ImageView
+        android:id="@+id/imageCyrus"
+        android:layout_width="129dp"
+        android:layout_height="119dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+        tools:srcCompat="@drawable/cyrus_logo" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="280dp"
+        android:layout_height="190dp"
+        android:layout_marginStart="105dp"
+        android:layout_marginLeft="105dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="@+id/imageCyrus"
+        app:layout_constraintTop_toTopOf="@+id/imageCyrus"
+        app:srcCompat="@drawable/speech" />
+
+    <Button
+        android:id="@+id/btA"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/roundbutton"
+        android:text="I use the same password for all my online accounts. It’s too hard to remember multiple passwords."
+        android:textSize="18sp"
+        app:backgroundTint="#FD6752"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/btB"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/roundbutton"
+        android:text="Next"
+        android:textSize="18sp"
+        app:backgroundTint="#FD6752"
+        app:layout_constraintStart_toStartOf="@+id/btA"
+        app:layout_constraintTop_toBottomOf="@+id/btA" />
+
+    <Button
+        android:id="@+id/btC"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/roundbutton"
+        android:text="Next"
+        android:textSize="18sp"
+        app:backgroundTint="#FD6752"
+        app:layout_constraintStart_toStartOf="@+id/btB"
+        app:layout_constraintTop_toBottomOf="@+id/btB" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginTop="24dp"
+        android:text="Click the answer that most applies to you"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvQuestion" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -32,8 +32,9 @@ public class QuizResult extends AppCompatActivity {
         //setup UI
         tvUserResult = findViewById(R.id.tvUserResult);
         tvCyrusSpeech = findViewById(R.id.tvCyrusSpeech);
-        ivOutcome = findViewById(R.id.ivOutcome);
-        ivCyrus = findViewById(R.id.ivCyrus);
+        ivOutcome = findViewById(R.id.ivAvatar);
+        ivCyrus = findViewById(R.id.imageCyrus);
+        ivCyrus.setImageResource(R.drawable.cyrus);
         btReturn = findViewById(R.id.btReturn);
 
         //setup user's results
