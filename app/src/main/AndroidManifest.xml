@@ -4,7 +4,11 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
+    </queries>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,7 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MainActivity"
         android:usesCleartextTraffic="true">
-        <activity android:name=".RiskAssessmentResultActivity"></activity>
+        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".SettingActivity" />
+        <activity android:name=".RiskAssessmentResultActivity" />
         <activity android:name=".RiskAssessmentActivity" />
         <activity android:name=".QuizResult" />
         <activity
