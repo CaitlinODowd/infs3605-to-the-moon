@@ -73,7 +73,7 @@ public class HomeActivity extends AppCompatActivity {
         reminder.show();
 
         tvWelcome = findViewById(R.id.tvWelcome);
-        tvWelcome.setText("Welcome back" + getCurrentUserFirstName() + "!");
+        tvWelcome.setText("Welcome back " + getCurrentUserFirstName() + "!");
         menu_speaker = findViewById(R.id.speaker_toolbar);
 
         //Initialise tool bar
@@ -213,7 +213,7 @@ public class HomeActivity extends AppCompatActivity {
                 //profile actions
                 Toast.makeText(this,"profile pressed",Toast.LENGTH_LONG).show();
                 startActivity(new Intent(getApplicationContext()
-                        ,ChatActivity.class));
+                        ,ProfileActivity.class));
                 overridePendingTransition(0,0);
                 return true;
 

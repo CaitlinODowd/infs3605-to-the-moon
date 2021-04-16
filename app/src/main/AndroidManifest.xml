@@ -18,7 +18,6 @@
         android:theme="@style/Theme.MainActivity"
         android:usesCleartextTraffic="true">
         <activity android:name=".ProfileActivity"
-            android:theme="@style/Theme.MainActivity.AppBarOverlay"
             ></activity>
         <activity android:name=".SettingActivity"></activity>
         <activity android:name=".RiskAssessmentResultActivity" />
