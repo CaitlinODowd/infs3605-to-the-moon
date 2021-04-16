@@ -9,7 +9,7 @@
         android:icon="@drawable/home32"
         android:title="Home" />
     <item
-        android:id="@+id/nav_alert"
-        android:icon="@drawable/bell32"
-        android:title="Alert" />
+        android:id="@+id/nav_setting"
+        android:icon="@drawable/setting32"
+        android:title="Setting" />
 </menu>

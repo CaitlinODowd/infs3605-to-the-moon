@@ -3,23 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:title="profile"
-        android:icon="@drawable/user32"
-        android:id="@+id/profile_toolbar"
-        app:showAsAction="always">
-    </item>
-
-    <item
-        android:title="profile"
         android:icon="@drawable/speaker32"
         android:id="@+id/speaker_toolbar"
         app:showAsAction="always">
     </item>
 
     <item
-        android:title="setting"
-        android:icon="@drawable/gear32"
-        android:id="@+id/setting_toolbar"
+        android:title="profile"
+        android:icon="@drawable/user32"
+        android:id="@+id/profile_toolbar"
         app:showAsAction="always">
     </item>
+
+
+
+
 
 </menu>

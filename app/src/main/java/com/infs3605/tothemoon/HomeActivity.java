@@ -1,8 +1,10 @@
 package com.infs3605.tothemoon;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
@@ -11,7 +13,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,9 +22,8 @@ import androidx.cardview.widget.CardView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import org.w3c.dom.Text;
-
 import java.util.Locale;
+import java.util.Random;
 import java.util.concurrent.ExecutionException;
 
 import static com.infs3605.tothemoon.AppDatabase.getDatabase;
@@ -40,10 +40,37 @@ public class HomeActivity extends AppCompatActivity {
 
     private MenuItem menu_speaker;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        //array list of reminder tips
+        String[] tips = {
+                "You should change your password every 2-3 months!",
+                "Think twice before you click any links! They could be malicious!",
+                "Avoid using public WiFi outside",
+                "Use password management tools like LastPass to store your passwords securely!",
+                "Review your privacy settings on social medias!"
+        };
+
+        int ran_tips = new Random().nextInt(tips.length);
+        String random = (tips [ran_tips]);
+
+        //Disclaimer pop-up reminder
+        AlertDialog.Builder reminder = new AlertDialog.Builder(HomeActivity.this);
+        reminder.setCancelable(true);
+        reminder.setTitle("Today's Cyber Tips from Cyrus");
+        reminder.setMessage(random);
+        reminder.setIcon(R.drawable.cyrus);
+        //set OK button
+        reminder.setPositiveButton("Got it!", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+            }
+        });
+        reminder.show();
 
         tvWelcome = findViewById(R.id.tvWelcome);
         tvWelcome.setText("Welcome back" + getCurrentUserFirstName() + "!");
@@ -73,6 +100,7 @@ public class HomeActivity extends AppCompatActivity {
                 }
             }
         });
+
 
 
 
@@ -117,6 +145,7 @@ public class HomeActivity extends AppCompatActivity {
         // Set Home being currently selected
         btm_navi_bar.setSelectedItemId(R.id.nav_home);
 
+
         //Perform the selected bar item listeners
         btm_navi_bar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -132,16 +161,20 @@ public class HomeActivity extends AppCompatActivity {
                     case R.id.nav_home:
                         return true;
 
-                    case R.id.nav_alert:
+                    case R.id.nav_setting:
                         startActivity(new Intent(getApplicationContext()
-                        ,AlertActivity.class));
+                        , SettingActivity.class));
                         overridePendingTransition(0,0);
                         return true;
 
                 }
                 return false;
             }
+
         });
+
+
+
 
     }
 
@@ -152,6 +185,27 @@ public class HomeActivity extends AppCompatActivity {
         return true;
     }
 
+    //back press back to home screen
+    @Override
+    public void onBackPressed() {
+        BottomNavigationView mBottomNavigationView = findViewById(R.id.bottom_navigation);
+        if (mBottomNavigationView.getSelectedItemId() == R.id.nav_home)
+        {
+            super.onBackPressed();
+            /*finish();*/
+        }
+        else
+        {
+            mBottomNavigationView.setSelectedItemId(R.id.nav_home);
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        BottomNavigationView mBottomNavigationView = findViewById(R.id.bottom_navigation);
+        mBottomNavigationView.getMenu().getItem(1).setChecked(true);
+    }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
@@ -162,14 +216,9 @@ public class HomeActivity extends AppCompatActivity {
                         ,ChatActivity.class));
                 overridePendingTransition(0,0);
                 return true;
-            case R.id.setting_toolbar:
-                //setting actions
-                Toast.makeText(this,"setting pressed",Toast.LENGTH_LONG).show();
-                startActivity(new Intent(getApplicationContext()
-                        ,SettingActivity.class));
 
             case R.id.speaker_toolbar:
-                //setting actions
+                //voice assist actions
                 Toast.makeText(this,"voice assist pressed",Toast.LENGTH_LONG).show();
                 speak();
         }
@@ -186,7 +235,9 @@ public class HomeActivity extends AppCompatActivity {
                 "Third column left menu is your daily dose of cyber news." +
                 "Third column right menu is quiz to test your cyber security knowledge";
 
+
         mTTS.speak(voiceAssistText, TextToSpeech.QUEUE_FLUSH, null);
+
     }
 
     @Override
@@ -214,6 +265,8 @@ public class HomeActivity extends AppCompatActivity {
 
         return "Error!";
     }
+
+
 
     private void launchLoginActivity() {
         Intent loginIntent = new Intent(this, LoginActivity.class);

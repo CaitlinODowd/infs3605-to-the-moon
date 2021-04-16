@@ -17,8 +17,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MainActivity"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ProfileActivity"></activity>
-        <activity android:name=".SettingActivity" />
+        <activity android:name=".ProfileActivity"
+            android:theme="@style/Theme.MainActivity.AppBarOverlay"
+            ></activity>
+        <activity android:name=".SettingActivity"></activity>
         <activity android:name=".RiskAssessmentResultActivity" />
         <activity android:name=".RiskAssessmentActivity" />
         <activity android:name=".QuizResult" />
@@ -28,8 +30,7 @@
             android:theme="@style/Theme.MainActivity.NoActionBar" />
         <activity
             android:name=".PassTestActivity"
-            android:label="@string/title_activity_pass_test"
-            android:theme="@style/Theme.MainActivity.NoActionBar" />
+            android:label="@string/title_activity_pass_test"/>
         <activity android:name=".QuizActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
