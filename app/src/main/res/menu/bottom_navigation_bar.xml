@@ -10,6 +10,6 @@
         android:title="Home" />
     <item
         android:id="@+id/nav_setting"
-        android:icon="@drawable/setting32"
-        android:title="Setting" />
+        android:icon="@drawable/help32"
+        android:title="Help" />
 </menu>
