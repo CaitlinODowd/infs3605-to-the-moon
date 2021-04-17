@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.Menu;
@@ -58,19 +60,32 @@ public class HomeActivity extends AppCompatActivity {
         int ran_tips = new Random().nextInt(tips.length);
         String random = (tips [ran_tips]);
 
-        //Disclaimer pop-up reminder
-        AlertDialog.Builder reminder = new AlertDialog.Builder(HomeActivity.this);
-        reminder.setCancelable(true);
-        reminder.setTitle("Today's Cyber Tips from Cyrus");
-        reminder.setMessage(random);
-        reminder.setIcon(R.drawable.cyrus);
-        //set OK button
-        reminder.setPositiveButton("Got it!", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-            }
-        });
-        reminder.show();
+        //only showing cyber tips every launch of app, saving first run or not in preference
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        /*editor.putBoolean("IS_FIRST_RUN", true);
+        editor.commit();*/
+
+        boolean isFirstRun = sharedPreferences.getBoolean("IS_FIRST_RUN", true);
+        if(isFirstRun) {
+            //Disclaimer pop-up reminder
+            AlertDialog.Builder reminder = new AlertDialog.Builder(HomeActivity.this);
+            reminder.setCancelable(true);
+            reminder.setTitle("Today's Cyber Tips from Cyrus");
+            reminder.setMessage(random);
+            reminder.setIcon(R.drawable.cyrus);
+            //set OK button
+            reminder.setPositiveButton("Got it!", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                }
+            });
+            reminder.show();
+
+            editor.putBoolean("IS_FIRST_RUN", false);
+            editor.commit();
+        }
+
 
         tvWelcome = findViewById(R.id.tvWelcome);
         tvWelcome.setText("Welcome back " + getCurrentUserFirstName() + "!");
@@ -247,6 +262,13 @@ public class HomeActivity extends AppCompatActivity {
             mTTS.shutdown();
         }
         super.onDestroy();
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        // Update preferences so message show when relaunch
+        editor.putBoolean("IS_FIRST_RUN", true);
+        editor.commit();
     }
 
     private String getCurrentUserFirstName() {
