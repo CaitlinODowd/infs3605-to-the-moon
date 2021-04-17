@@ -37,6 +37,7 @@ public class HomeActivity extends AppCompatActivity {
     private CardView card_quiz;
     private CardView card_chatbot;
     private CardView card_riskassess;
+    private CardView card_news;
     private TextView tvWelcome;
     private TextToSpeech mTTS;
 
@@ -143,6 +144,15 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HomeActivity.this, ChatActivity.class));
+            }
+        });
+
+        //set on-click listener on cardview news
+        card_news = findViewById(R.id.card_news);
+        card_news.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, NewsActivity.class));
             }
         });
 

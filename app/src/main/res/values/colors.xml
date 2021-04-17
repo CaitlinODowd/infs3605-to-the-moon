@@ -18,4 +18,6 @@
 
     <color name="bg_bubble_self">#62caa6</color>
     <color name="bg_bubble_watbot">#ecf0f1</color>
+
+    <color name="colorTextTitle">#262626</color>
 </resources>

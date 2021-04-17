@@ -20,6 +20,7 @@
         <activity android:name=".ProfileActivity"
             ></activity>
         <activity android:name=".SettingActivity"></activity>
+        <activity android:name=".NewsActivity"></activity>
         <activity android:name=".RiskAssessmentResultActivity" />
         <activity android:name=".RiskAssessmentActivity" />
         <activity android:name=".QuizResult" />
