@@ -70,9 +70,9 @@
 
         <TextView
             android:id="@+id/tv_profileemail"
-            android:layout_width="361dp"
-            android:layout_height="48dp"
-            android:layout_marginBottom="304dp"
+            android:layout_width="328dp"
+            android:layout_height="52dp"
+            android:layout_marginBottom="284dp"
             android:background="@drawable/home_welcome_bubble"
             android:gravity="left|center_vertical"
             android:paddingLeft="18sp"
@@ -82,6 +82,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.301"
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
