@@ -8,8 +8,6 @@ import static com.infs3605.tothemoon.AppDatabase.getDatabase;
 
 public class LoginUserDBTask extends AsyncTask<User, Boolean, Boolean> {
     private static final String TAG = "LoginUserTask";
-
-    String postUrl = "https://eseniors.pythonanywhere.com/auth/device/";
     AppDatabase mDb;
 
     public void setDatabase(Context context) {

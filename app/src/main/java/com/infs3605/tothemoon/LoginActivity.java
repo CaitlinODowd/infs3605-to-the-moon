@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,11 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         bLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(true) {
-                    loginUserOnline(etLoginEmail.getText().toString(), etLoginPassword.getText().toString());
-                } else {
-                    loginUserOffline(etLoginEmail.getText().toString(), etLoginPassword.getText().toString());
-                }
+                loginUserOnline(etLoginEmail.getText().toString(), etLoginPassword.getText().toString());
             }
         });
 
@@ -155,6 +152,7 @@ public class LoginActivity extends AppCompatActivity {
             User user = userByEmailTask.execute(email).get();
             if(user != null) {
                 if(user.checkPassword(password)) {
+                    Log.d(TAG, "Correct email/password!");
                     LoginUserDBTask loginUserDBTask = new LoginUserDBTask();
                     loginUserDBTask.setDatabase(getApplicationContext());
 
@@ -164,15 +162,19 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(getBaseContext(), "Successfully signed-in " + user.getFirstName() + "!", Toast.LENGTH_LONG).show();
                         launchHomeActivity();
                     } else {
+                        Log.d(TAG, "Failed to write to DB");
                         Toast.makeText(getBaseContext(), "Failed to write to DB", Toast.LENGTH_LONG).show();
                     }
                 } else {
+                    Log.d(TAG, "Incorrect email/password!");
                     Toast.makeText(getBaseContext(), "Incorrect email/password!", Toast.LENGTH_LONG).show();
                 }
             } else {
-                Toast.makeText(getBaseContext(), "Cannot currently login, please connect to internet and try again!", Toast.LENGTH_LONG).show();
+                Log.d(TAG, "Login information for that account isn't stored, please connect to internet and try again!");
+                Toast.makeText(getBaseContext(), "Login information for that account isn't stored, please connect to internet and try again!", Toast.LENGTH_LONG).show();
             }
         } catch(Exception e) {
+            Log.d(TAG, "Failed to obtain user object for - " + email + "!");
             Toast.makeText(getBaseContext(), "Failed to obtain user object for - " + email + "!", Toast.LENGTH_LONG).show();
         }
     }

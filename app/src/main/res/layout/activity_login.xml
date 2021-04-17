@@ -54,6 +54,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/llHomeTop">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/bOnlineLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:text="Online"
+                app:backgroundTint="@color/Red" />
+
+            <Button
+                android:id="@+id/bOfflineLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:text="Offline"
+                app:backgroundTint="@color/grey" />
+        </LinearLayout>
+
         <TextView
             android:id="@+id/tvRegisterPrompt"
             android:layout_width="wrap_content"

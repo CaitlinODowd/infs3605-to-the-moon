@@ -22,8 +22,20 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.Locale;
 import java.util.Random;
 import java.util.concurrent.ExecutionException;
@@ -40,6 +52,7 @@ public class HomeActivity extends AppCompatActivity {
     private CardView card_news;
     private TextView tvWelcome;
     private TextToSpeech mTTS;
+    private TextView tvHChatbot, tvHCyberNews;
 
     private MenuItem menu_speaker;
 
@@ -140,21 +153,11 @@ public class HomeActivity extends AppCompatActivity {
 
         //set on-click listener on cardview chatbot
         card_chatbot = findViewById(R.id.card_chatbot);
-        card_chatbot.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ChatActivity.class));
-            }
-        });
 
         //set on-click listener on cardview news
         card_news = findViewById(R.id.card_news);
-        card_news.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, NewsActivity.class));
-            }
-        });
+
+        isOnline();
 
         //set on-click listener on cardview risk assessment
         card_riskassess = findViewById(R.id.card_riskassess);
@@ -199,8 +202,6 @@ public class HomeActivity extends AppCompatActivity {
         });
 
 
-
-
     }
 
     @Override
@@ -230,6 +231,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onResume();
         BottomNavigationView mBottomNavigationView = findViewById(R.id.bottom_navigation);
         mBottomNavigationView.getMenu().getItem(1).setChecked(true);
+        isOnline();
     }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -298,13 +300,74 @@ public class HomeActivity extends AppCompatActivity {
         return "Error!";
     }
 
-
-
     private void launchLoginActivity() {
         Intent loginIntent = new Intent(this, LoginActivity.class);
         startActivity(loginIntent);
     }
 
+    public interface VolleyResponseListener {
+        void onError();
 
+        void onResponse();
+    }
 
+    HomeActivity.VolleyResponseListener listener = new HomeActivity.VolleyResponseListener() {
+        @Override
+        public void onError() {
+            card_chatbot.setClickable(false);
+            card_chatbot.setBackgroundColor(getResources().getColor(R.color.grey));
+            tvHChatbot = findViewById(R.id.tvHChatbot);
+            tvHChatbot.setText("Cyrus Chatbot\n(Unavailable - No Internet Connection)");
+
+            card_news.setClickable(false);
+            card_news.setBackgroundColor(getResources().getColor(R.color.grey));
+            tvHCyberNews = findViewById(R.id.tvHCyberNews);
+            tvHCyberNews.setText("CyberNews\n(No Internet)");
+        }
+
+        @Override
+        public void onResponse() {
+            card_chatbot.setClickable(true);
+            card_chatbot.setBackgroundColor(getResources().getColor(R.color.white));
+            card_chatbot.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(HomeActivity.this, ChatActivity.class));
+                }
+            });
+            tvHChatbot = findViewById(R.id.tvHChatbot);
+            tvHChatbot.setText("Cyrus Chatbot");
+
+            card_news.setClickable(true);
+            card_news.setBackgroundColor(getResources().getColor(R.color.white));
+            card_news.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(HomeActivity.this, NewsActivity.class));
+                }
+            });
+            tvHCyberNews = findViewById(R.id.tvHCyberNews);
+            tvHCyberNews.setText("CyberNews");
+        }
+    };
+
+    private void isOnline() {
+        String url = getString(R.string.ibm_cloud_url);
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        listener.onResponse();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                listener.onError();
+            }
+        });
+
+        requestQueue.add(stringRequest);
+    }
 }

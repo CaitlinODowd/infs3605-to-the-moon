@@ -45,9 +45,9 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    private void launchHomeActivity() {
-        Intent homeIntent = new Intent(this, HomeActivity.class);
-        startActivity(homeIntent);
+    private void launchTutorialActivity() {
+        Intent tutorialIntent = new Intent(this, TutorialActivity.class);
+        startActivity(tutorialIntent);
     }
 
     public interface VolleyResponseListener {
@@ -83,7 +83,7 @@ public class RegisterActivity extends AppCompatActivity {
                     if(result) {
                         Toast.makeText(getBaseContext(), "Successfully registered " + newUser.getFirstName() + "!", Toast.LENGTH_LONG).show();
 
-                        launchHomeActivity();
+                        launchTutorialActivity();
                     } else {
                         Toast.makeText(getBaseContext(), "Failed to register " + newUser.getFirstName() + "!", Toast.LENGTH_LONG).show();
                     }

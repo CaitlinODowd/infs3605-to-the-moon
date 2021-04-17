@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <queries>
         <intent>
             <action android:name="android.intent.action.TTS_SERVICE" />
@@ -17,6 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MainActivity"
         android:usesCleartextTraffic="true">
+
         <activity android:name=".ProfileActivity"
             ></activity>
         <activity android:name=".SettingActivity"></activity>
@@ -24,6 +26,8 @@
         <activity android:name=".RiskAssessmentResultActivity" />
         <activity android:name=".RiskAssessmentActivity" />
         <activity android:name=".QuizResult" />
+        <activity android:name=".TutorialActivity"/>
+        <activity android:name=".TutorialShowcaseActivity"/>
         <activity
             android:name=".ChatActivity"
             android:label="@string/title_activity_chat"
@@ -42,12 +46,6 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".HomeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.CALL_PHONE" />
 </manifest>

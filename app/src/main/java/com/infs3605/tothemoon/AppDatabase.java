@@ -41,7 +41,7 @@ public abstract class AppDatabase extends RoomDatabase {
                                 newUser.setFirstName("John");
                                 newUser.setLastName("Doe");
                                 newUser.setPasswordHash("example");
-                                newUser.setSignedIn(true);
+                                newUser.setSignedIn(false);
                                 getDatabase(context).userDao().insertUsers(newUser);
 
                                 newUser = new User();
