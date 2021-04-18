@@ -17,6 +17,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <Space
+                android:id="@+id/input_space"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginTop="40dp"
+
+                />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"

@@ -1,5 +1,16 @@
 package com.infs3605.tothemoon;
 
+/*
+INFS3605 Capstone Project T1 2021
+To the Moon
+Caitlin O'Dowd z5183007
+Sharon Cheung z5162825
+Neil Matani z5162753
+Aiden Mansley z5265120
+Connor Williams z5189800
+Timothy Baker z5162709
+*/
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 

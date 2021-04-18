@@ -1,5 +1,16 @@
 package com.infs3605.tothemoon;
 
+/*
+INFS3605 Capstone Project T1 2021
+To the Moon
+Caitlin O'Dowd z5183007
+Sharon Cheung z5162825
+Neil Matani z5162753
+Aiden Mansley z5265120
+Connor Williams z5189800
+Timothy Baker z5162709
+*/
+
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 
@@ -12,7 +23,7 @@ import java.util.Random;
 
 import org.ocpsoft.prettytime.PrettyTime;
 
-//Utility function for News API used from -> https://gist.github.com/haerulmuttaqin/3d20a9127070451ccedd80c284649fd6
+//Utility class for News API used from -> https://gist.github.com/haerulmuttaqin/3d20a9127070451ccedd80c284649fd6
 public class Utils {
     public static ColorDrawable[] vibrantLightColorList =
             {

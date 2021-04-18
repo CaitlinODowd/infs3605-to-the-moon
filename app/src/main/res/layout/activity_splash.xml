@@ -21,7 +21,7 @@
         android:id="@+id/tvSplash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="E-Senior Bot - Cyrus"
+        android:text="eSeniors Bot - Cyrus"
         android:textColor="@color/orange"
         android:textSize="30sp"
         android:textStyle="bold"

@@ -34,7 +34,6 @@ public class NewsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_news);
 
         Intent intent = getIntent();
-        String title = intent.getStringExtra(INTENT_MESSAGE);
 
         setTitle("Cybersecurity News");
 
@@ -48,7 +47,7 @@ public class NewsActivity extends AppCompatActivity {
         loadCyberJson();
     }
 
-    //call using politics queries
+    //call using cyber queries
     public void loadCyberJson(){
 
         NewsInterface newsInterface = NewsApiClient.getNewsApiClient().create(NewsInterface.class);
