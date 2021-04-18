@@ -1,12 +1,12 @@
 # infs3605-to-the-moon
 UNSW INFS3605 2021 T1 Capstone Project
  
-Caitlin O'Dowd z5183007
-Sharon Cheung z5162825
-Neil Matani z5162753
-Aiden Mansley z5265120
-Connor Williams z5189800
-Timothy Baker z5162709
+- Caitlin O'Dowd z5183007
+- Sharon Cheung z5162825
+- Neil Matani z5162753
+- Aiden Mansley z5265120
+- Connor Williams z5189800
+- Timothy Baker z5162709
 
 Instructions for running App from Android Studio:
 1. After opening project and letting Gradle scripts run, go to "Build" dropdown.
